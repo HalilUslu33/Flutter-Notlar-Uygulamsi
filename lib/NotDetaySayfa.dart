@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notlar_uygulamasi/Notlar.dart';
+import 'package:notlar_uygulamasi/Notlardao.dart';
 import 'package:notlar_uygulamasi/main.dart';
 
 class NotDetaySayfa extends StatefulWidget {
@@ -18,14 +19,15 @@ class _NotDetaySayfaState extends State<NotDetaySayfa> {
   var tfnot2 = TextEditingController();
 
   Future<void> sil(int not_id) async {
-    print("$not_id silindi");
+    await Notlardao().notSil(not_id);
     Navigator.push(context, MaterialPageRoute(builder: (context) => Anasayfa()));
   }
 
   Future<void> guncelle(int not_id,String ders_adi,int not1,int not2) async {
-    print("$ders_adi - $not1 - $not2 güncellendi");
+    await Notlardao().notGuncelle(not_id, ders_adi, not1, not2);
     Navigator.push(context, MaterialPageRoute(builder: (context) => Anasayfa()));
   }
+
 
   @override
   void initState() {
